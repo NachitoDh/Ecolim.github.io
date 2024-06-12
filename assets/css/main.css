@@ -34,12 +34,18 @@
   --nav-dropdown-color: #01433c; /* Used for navigation links of the dropdown items in the navigation menu. */
   --nav-dropdown-hover-color: #f85a40; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
 }
-
+.icon img {
+  max-width: 500px;
+  max-height: 500px;
+  aspect-ratio: 1 / 1; /* Ajusta la relación de aspecto si es necesario */
+}
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
 }
-
+.btn-get-started {
+  margin: 10px;  /* Ajusta el valor para el espacio deseado */
+}
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
@@ -1213,18 +1219,7 @@ section,
   position: relative;
 }
 
-.services .service-item .icon:before {
-  position: absolute;
-  content: "";
-  height: 100%;
-  width: 100%;
-  background: color-mix(in srgb, var(--heading-color), transparent 95%);
-  border-radius: 50px;
-  z-index: 1;
-  top: 10px;
-  right: -20px;
-  transition: 0.3s;
-}
+
 
 .services .service-item h3 {
   color: color-mix(in srgb, var(--heading-color), transparent 20%);
