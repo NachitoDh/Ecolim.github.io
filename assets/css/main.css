@@ -2653,6 +2653,28 @@ section,
 .widget-item:last-child {
   margin-bottom: 0;
 }
+.custom-select {
+  margin-left: 13px; /* Mueve todo el listbox hacia la derecha */
+  width: calc(100% - 23px); /* Ancho del listbox */
+  padding: 10px; /* Espacio interno */
+  font-size: 16px; /* Tamaño de fuente */
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%); /* Borde inicial */
+  background-color: var(--background-color); /* Fondo inicial */
+  border-radius: 1px; /* Bordes redondeados */
+  outline: none; /* Quita el borde cuando está enfocado */
+}
+
+
+.custom-select option:first-child {
+  color: transparent 70%; /* Hace el texto transparente */
+}
+
+
+/* Estilos al enfocar */
+.custom-select:focus {
+  border-color: #008374; /* Cambia el color del borde al enfocar */
+  background-color: var(--background-color);; /* Cambia el fondo al enfocar */
+}
 
 .search-widget form {
   background: var(--background-color);
