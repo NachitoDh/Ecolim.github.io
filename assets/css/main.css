@@ -51,15 +51,18 @@
   aspect-ratio: 1 / 1;
   /* Ajusta la relación de aspecto si es necesario */
 }
-
+.icon img {
+  max-width: 500px;
+  max-height: 500px;
+  aspect-ratio: 1 / 1; /* Ajusta la relación de aspecto si es necesario */
+}
 /* Smooth scroll */
 :root {
   scroll-behavior: smooth;
 }
 
 .btn-get-started {
-  margin: 10px;
-  /* Ajusta el valor para el espacio deseado */
+  margin: 10px;  /* Ajusta el valor para el espacio deseado */
 }
 
 /*--------------------------------------------------------------
