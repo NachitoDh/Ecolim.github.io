@@ -160,53 +160,50 @@
 
           </div>
 
-          <div class="col-lg-8">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade" data-aos-delay="100">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="correo" placeholder="Tu correo (opcional)">
-                </div>
-                
-                <div class="col-md-6">
-                  <input type="text" name="telefono" class="form-control" placeholder="Numero de Telefono" required>
-                </div>
-                
-                  <select  class="custom-select">
-                    <option disabled selected value="">Selecciona un servicio</option>
-                    <option value="servicio1">Desratizacion</option>
-                    <option value="servicio2">Fumigacion</option>
-                    <option value="servicio3">Sanitización</option>
-                    <option value="servicio4">Desinsectación</option>
-                    <option value="servicio5">Control de Avez</option>
-                  </select>
-                
-
-                <div class="col-md-12">
-                  <textarea class="form-control" rows="2"  name="descripcion"  placeholder="Descripcion del servicio" required=""></textarea>
-                </div>
-
-                
-              </head>
-              <body>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Enviar Datos</button>
-                </div>
-
-              </div>
-            </form>
-
-          </div><!-- End Contact Form -->
-
+          <body>
+            <div class="col-lg-8">
+                <form method="post" class="php-email-form" data-aos="fade" data-aos-delay="100">
+                    <div class="row gy-4">
+                        <div class="col-md-6">
+                            <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
+                        </div>
+        
+                        <div class="col-md-6">
+                            <input type="email" class="form-control" name="correo" placeholder="Tu correo (opcional)">
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <input type="text" name="telefono" class="form-control" placeholder="Numero de Telefono" required>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <select name="servicio" class="custom-select" required>
+                                <option disabled selected value="">Selecciona un servicio</option>
+                                <option value="Desratizacion">Desratizacion</option>
+                                <option value="Fumigacion">Fumigacion</option>
+                                <option value="Sanitización">Sanitización</option>
+                                <option value="Desinsectación">Desinsectación</option>
+                                <option value="Control de Aves">Control de Aves</option>
+                            </select>
+                        </div>
+        
+                        <div class="col-md-12">
+                            <textarea class="form-control" rows="2" name="descripcion" placeholder="Descripcion del servicio" required></textarea>
+                        </div>
+        
+                        <div class="col-md-12 text-center">
+                            <div class="loading">Cargando...</div>
+                            <div class="error-message"></div>
+                            <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
+        
+                            <button type="submit">Enviar Datos</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+            <script src="js/validate.js"></script>
+        </body>
         </div>
 
       </div>
