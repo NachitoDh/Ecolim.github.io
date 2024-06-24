@@ -2654,13 +2654,13 @@ section,
   margin-bottom: 0;
 }
 .custom-select {
-  margin-left: 13px; /* Mueve todo el listbox hacia la derecha */
-  width: calc(100% - 23px); /* Ancho del listbox */
+  margin-left: 1px; /* Mueve todo el listbox hacia la derecha */
+  width: 100%; /* Ancho del listbox */
   padding: 10px; /* Espacio interno */
   font-size: 16px; /* Tamaño de fuente */
-  border: 1px solid color-mix(in srgb, var(--default-color), transparent 70%); /* Borde inicial */
+  border: 0px solid color-mix(in srgb, var(--default-color), transparent 70%); /* Borde inicial */
   background-color: var(--background-color); /* Fondo inicial */
-  border-radius: 1px; /* Bordes redondeados */
+  border-radius: 10px; /* Bordes redondeados */
   outline: none; /* Quita el borde cuando está enfocado */
 }
 
@@ -2819,4 +2819,146 @@ section,
   padding-left: 5px;
   color: color-mix(in srgb, var(--default-color), transparent 60%);
   font-size: 14px;
+}
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-width: 3000px;
+  padding: 20px;
+  border-radius: 20px;
+  position: relative;
+  background-color: #008374;
+  color: #ffffff;
+  border: 1px solid ;
+}
+
+.title {
+  font-size: 28px;
+  font-weight: 600;
+  letter-spacing: -1px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding-left: 30px;
+  color: #00bfff;
+}
+
+.title::before {
+  width: 18px;
+  height: 18px;
+}
+
+.title::after {
+  width: 18px;
+  height: 18px;
+  animation: pulse 1s linear infinite;
+}
+
+.title::before,
+.title::after {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  border-radius: 50%;
+  left: 0px;
+  background-color: #008374;
+}
+
+.message, 
+.signin {
+  font-size: 17px;
+  color: rgb(255, 255, 255);
+ 
+}
+
+.signin {
+  text-align: center;
+}
+
+.signin a:hover {
+  text-decoration: underline royalblue;
+}
+
+.signin a {
+  color: #14191b;
+}
+
+.flex {
+  display: flex;
+  width: 250%;
+  gap: 60px;
+  
+}
+
+.form label {
+  position: relative;
+}
+
+.form label .input {
+  background-color: #ffffff;
+  color: #000000;
+  width: 100%;
+  max-width: 100%;
+  padding: 20px 05px 05px 10px;
+  outline: 0;
+  border: 1px solid rgba(105, 105, 105, 0.397);
+  border-radius: 10px;
+}
+
+.form label .input + span {
+  color: #000000;
+  position: absolute;
+  left: 10px;
+  top: 0px;
+  font-size: 1em;
+  cursor: text;
+  transition: 0.3s ease;
+}
+
+.form label .input:placeholder-shown + span {
+  top: 12.5px;
+  font-size: 0.9em;
+}
+
+.form label .input:focus + span,
+.form label .input:valid + span {
+  color: #025c51;
+  top: 0px;
+  font-size: 0.7em;
+  font-weight: 600;
+}
+
+.input {
+  font-size: medium;
+}
+.email {
+  font-size: medium;
+}
+.submit {
+  border: none;
+  outline: none;
+  padding: 10px;
+  border-radius: 10px;
+  color: #fff;
+  font-size: 16px;
+  transform: .3s ease;
+  background-color: #029684;
+}
+
+.submit:hover {
+  background-color: #016156;
+}
+
+@keyframes pulse {
+  from {
+    transform: scale(0.9);
+    opacity: 1;
+  }
+
+  to {
+    transform: scale(1.8);
+    opacity: 0;
+  }
 }

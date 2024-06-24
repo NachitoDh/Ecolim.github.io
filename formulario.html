@@ -118,6 +118,7 @@
         <p>Ingresa todos tus datos y te responderemos al instante</p>
       </div><!-- End Section Title -->
 
+      
       <div class="container" data-aos="fade-up" data-aos-delay="100">
 
         <div class="row gx-lg-0 gy-4">
@@ -159,7 +160,7 @@
             </div>
 
           </div>
-
+          <!--
           <body>
             <div class="col-lg-8">
                 <form method="post" class="php-email-form" data-aos="fade" data-aos-delay="100">
@@ -204,6 +205,50 @@
         
             <script src="js/validate.js"></script>
         </body>
+        -->
+        <body>
+          <div class="col-lg-8">
+            <form class="form">
+              <p class="message">Completa todos los campos</p>
+                  <div class="flex">
+                  <label>
+                      <input class="input" type="text" name="nombre" required="">
+                      <span>Nombre</span>
+                  </label>
+          
+                  <label>
+                      <input class="input" type="text" name="telefono" required="">
+                      <span>Telefono</span>
+                  </label>
+              </div>  
+                      
+              <label>
+                  <input class="input" type="email" name="correo" >
+                  <span>Email (opcional)</span>
+              </label> 
+                  
+              <label>
+                  <input class="input" type="text" name="descripcion" required="">
+                  <span>Descripcion del Servicio</span>
+              </label>
+              <label>
+
+              
+                <select name="servicio" class="custom-select" required>
+                    <option disabled selected value="">Selecciona un servicio</option>
+                    <option value="Desratizacion">Desratizacion</option>
+                    <option value="Fumigacion">Fumigacion</option>
+                    <option value="Sanitización">Sanitización</option>
+                    <option value="Desinsectación">Desinsectación</option>
+                    <option value="Control de Aves">Control de Aves</option>
+                </select>
+              </label>
+              <button class="submit">Enviar</button>
+              
+            </form>
+          </div>
+        </body>
+
         </div>
 
       </div>
