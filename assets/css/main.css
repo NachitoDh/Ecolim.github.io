@@ -2918,12 +2918,11 @@ section,
 }
 
 .form label .input:placeholder-shown + span {
-  top: 12.5px;
+  top: 1.5px;
   font-size: 0.9em;
 }
 
-.form label .input:focus + span,
-.form label .input:valid + span {
+.form label .input:focus + span{
   color: #025c51;
   top: 0px;
   font-size: 0.7em;
