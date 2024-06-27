@@ -207,43 +207,75 @@
         </body>
         -->
         <body>
+
           <div class="col-lg-8">
-            <form class="form" action="https://app-ecolim.onrender.com/submit" method="POST">
-                <p class="message">Completa todos los campos</p>
-                <div class="flex">
-                    <label>
-                        <input class="input" type="text" name="nombre" required>
-                        <span>Nombre</span>
-                    </label>
-    
-                    <label>
-                        <input class="input" type="text" name="telefono" required>
-                        <span>Telefono</span>
-                    </label>
-                </div>  
-    
-                <label>
-                    <input class="input" type="email" name="correo">
-                    <span>Email (opcional)</span>
-                </label> 
-    
-                <label>
-                    <input class="input" type="text" name="descripcion" required>
-                    <span>Descripcion del Servicio</span>
-                </label>
+         <form class="form" action="https://app-ecolim.onrender.com/submit" method="POST" id="formulario">
+    <p class="message">Completa todos los campos</p>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#formulario').on('submit', function(event) {
+                event.preventDefault(); // Previene la acción por defecto del formulario
                 
-                <label>
-                    <select name="servicio" class="custom-select" required>
-                        <option disabled selected value="">Selecciona un servicio</option>
-                        <option value="Desratizacion">Desratizacion</option>
-                        <option value="Fumigacion">Fumigacion</option>
-                        <option value="Sanitización">Sanitización</option>
-                        <option value="Desinsectación">Desinsectación</option>
-                        <option value="Control de Aves">Control de Aves</option>
-                    </select>
-                </label>
-                <button class="submit" type="submit">Enviar</button>
-            </form>
+                // Obtener los datos del formulario
+                var formData = $(this).serialize();
+    
+                $.ajax({
+                    url: 'https://app-ecolim.onrender.com/submit',
+                    type: 'POST',
+                    data: formData,
+                    success: function(response) {
+                        $('.message').html('<p>' + response.message + '</p>');
+                        $('#formulario')[0].reset(); // Reiniciar el formulario
+                    },
+                    error: function(xhr, status, error) {
+                        $('.message').html('<p>Ocurrió un error: ' + error + '</p>');
+                    }
+                });
+            });
+        });
+    </script>
+    
+
+    <div class="flex">
+        <label>
+            <input class="input" type="text" name="nombre" required>
+            <span>Nombre</span>
+        </label>
+
+        <label>
+            <input class="input" type="text" name="telefono" required>
+            <span>Teléfono</span>
+        </label>
+    </div>  
+
+    <label>
+        <input class="input" type="email" name="correo">
+        <span>Email (opcional)</span>
+    </label> 
+
+    <label>
+        <input class="input" type="text" name="descripcion" required>
+        <span>Descripción del Servicio</span>
+    </label>
+    
+    <label>
+        <select name="servicio" class="custom-select" required>
+            <option disabled selected value="">Selecciona un servicio</option>
+            <option value="Desratizacion">Desratización</option>
+            <option value="Fumigacion">Fumigación</option>
+            <option value="Sanitización">Sanitización</option>
+            <option value="Desinsectación">Desinsectación</option>
+            <option value="Control de Aves">Control de Aves</option>
+        </select>
+    </label>
+    <button class="submit" type="submit">Enviar</button>
+</form>
+
+
+
+
+
         </div>
         </body>
 
