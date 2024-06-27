@@ -48,7 +48,7 @@
       <div class="container d-flex justify-content-center justify-content-md-between">
         <div class="contact-info d-flex align-items-center">
           <i class="bi bi-envelope d-flex align-items-center"><a
-              href="mailto:ignaciojurgen11@gmail.co">ignaciojurgen11@gmail.com</a></i>
+              href="mailto:ignaciojurgen11@gmail.com">ignaciojurgen11@gmail.com</a></i>
 
           <i class="bi bi-phone d-flex align-items-center ms-4"><a href="tel:+56920009558">+56 9 2000 9558</a></i>
 
@@ -125,29 +125,31 @@
 
           <div class="col-lg-4">
             <div class="info-container d-flex flex-column align-items-center justify-content-center">
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
+              
+              <a target="_blank" href="https://www.google.com/maps/place/Penaflor,+Pe%C3%B1aflor,+Regi%C3%B3n+Metropolitana" class="info-item d-flex" data-aos="fade-up" data-aos-delay="200">
                 <i class="bi bi-geo-alt flex-shrink-0"></i>
                 <div>
                   <h3>Dirección</h3>
                   <p>Peñaflor</p>
                 </div>
-              </div><!-- End Info Item -->
+              </a><!-- End Info Item -->
 
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
+              <a href="tel:+56920009558" class="info-item d-flex" data-aos="fade-up" data-aos-delay="300">
                 <i class="bi bi-telephone flex-shrink-0"></i>
                 <div>
                   <h3>Llámanos</h3>
                   <p>+56 9 2000 9558</p>
                 </div>
-              </div><!-- End Info Item -->
+              </a>
+              <!-- End Info Item -->
 
-              <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
+              <a href="mailto:ignaciojurgen11@gmail.com"  target="_blank" class="info-item d-flex" data-aos="fade-up" data-aos-delay="400">
                 <i class="bi bi-envelope flex-shrink-0"></i>
                 <div>
                   <h3>Nuestro email</h3>
                   <p>ignaciojurgen11@gmail.com</p>
                 </div>
-              </div><!-- End Info Item -->
+              </a><!-- End Info Item -->
 
               <div class="info-item d-flex" data-aos="fade-up" data-aos-delay="500">
                 <i class="bi bi-clock flex-shrink-0"></i>
@@ -206,77 +208,99 @@
             <script src="js/validate.js"></script>
         </body>
         -->
-        <body>
+       
+          <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+          <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+          
 
-          <div class="col-lg-8">
-         <form class="form" action="https://app-ecolim.onrender.com/submit" method="POST" id="formulario">
-    <p class="message">Completa todos los campos</p>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
+          
+
+      </head>
+      <body> 
+        <div class="col-lg-8">
+          <form id="formulario" class="form" action="https://app-ecolim.onrender.com/submit" method="POST" id="mi-formulario">
+              <p class="message">Completa todos los campos</p>
+              <div class="flex">
+                  <label>
+                      <input class="input" type="text" name="nombre" required >
+                      <span>Nombre</span>
+                  </label>
+      
+                  <label>
+                      <input class="input" type="text" pattern="[0-9]{8,12}" name="telefono" required 
+                      oninvalid="this.setCustomValidity('Ingresa un número telefonico valido')" oninput="setCustomValidity('')"  placeholder="912345678">
+                <span>Teléfono</span>
+                  </label>
+              </div>  
+      
+              <label>
+                  <input class="input" type="email" name="correo" >
+                  <span>Email (opcional)</span>
+              </label> 
+      
+              <label>
+                  <input class="input" type="text" name="descripcion" required>
+                  <span>Descripcion del Servicio</span>
+              </label>
+              
+              <label>
+                  <select name="servicio" class="custom-select" required>
+                      <option disabled selected value="">Selecciona un servicio</option>
+                      <option value="Desratizacion">Desratizacion</option>
+                      <option value="Fumigacion">Fumigacion</option>
+                      <option value="Sanitización">Sanitización</option>
+                      <option value="Desinsectación">Desinsectación</option>
+                      <option value="Control de Aves">Control de Aves</option>
+                  </select>
+              </label>
+              <button class="submit" type="submit">Enviar</button>
+          </form>
+        </div>
+      </body>
+         
+      <script>
+        
         $(document).ready(function() {
             $('#formulario').on('submit', function(event) {
                 event.preventDefault(); // Previene la acción por defecto del formulario
                 
-                // Obtener los datos del formulario
-                var formData = $(this).serialize();
-    
                 $.ajax({
-                    url: 'https://app-ecolim.onrender.com/submit',
+                    url: $(this).attr('action'),
                     type: 'POST',
-                    data: formData,
+                    data: $(this).serialize(),
                     success: function(response) {
-                        $('.message').html('<p>' + response.message + '</p>');
-                        $('#formulario')[0].reset(); // Reiniciar el formulario
+                        if(response.message) {
+                            Swal.fire({
+                                icon: 'success',
+                                title: 'Éxito',
+                                text: response.message,
+                            });
+                            $('#formulario')[0].reset(); // Reiniciar el formulario
+                        } else if(response.error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Ocurrió un error: ' + response.error,
+                            });
+                        }
                     },
                     error: function(xhr, status, error) {
-                        $('.message').html('<p>Ocurrió un error: ' + error + '</p>');
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Error',
+                            text: 'Ocurrió un error: ' + error,
+                        });
                     }
                 });
             });
         });
+    
+
+    
+     
     </script>
-    
-
-    <div class="flex">
-        <label>
-            <input class="input" type="text" name="nombre" required>
-            <span>Nombre</span>
-        </label>
-
-        <label>
-            <input class="input" type="text" name="telefono" required>
-            <span>Teléfono</span>
-        </label>
-    </div>  
-
-    <label>
-        <input class="input" type="email" name="correo">
-        <span>Email (opcional)</span>
-    </label> 
-
-    <label>
-        <input class="input" type="text" name="descripcion" required>
-        <span>Descripción del Servicio</span>
-    </label>
-    
-    <label>
-        <select name="servicio" class="custom-select" required>
-            <option disabled selected value="">Selecciona un servicio</option>
-            <option value="Desratizacion">Desratización</option>
-            <option value="Fumigacion">Fumigación</option>
-            <option value="Sanitización">Sanitización</option>
-            <option value="Desinsectación">Desinsectación</option>
-            <option value="Control de Aves">Control de Aves</option>
-        </select>
-    </label>
-    <button class="submit" type="submit">Enviar</button>
-</form>
-
-
-
-
-
-        </div>
+      
+      
         </body>
 
         </div>
