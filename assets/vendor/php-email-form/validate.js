@@ -3,6 +3,7 @@
 * URL: https://bootstrapmade.com/php-email-form/
 * Author: BootstrapMade.com
 */
+/*
 (function () {
   "use strict";
 
@@ -13,7 +14,7 @@
       event.preventDefault();
 
       let thisForm = this;
-      let action = 'https://app-ecolim.onrender.com';  // Reemplaza con la URL de tu backend Flask
+      let action = 'https://app-ecolim.onrender.com/submit';  // Reemplaza con la URL de tu backend Flask
 
       if (!action) {
         displayError(thisForm, '¡La propiedad action del formulario no está configurada!');
@@ -45,11 +46,11 @@
     })
     .then(data => {
       thisForm.querySelector('.loading').classList.remove('d-block');
-      if (data.message === 'Datos enviados con éxito') {
+      if (data.message && data.message.includes('Datos enviados con éxito')) {
         thisForm.querySelector('.sent-message').classList.add('d-block');
         thisForm.reset();
       } else {
-        throw new Error(data.message ? data.message : 'El envío del formulario falló y no se devolvió un mensaje de error desde: ' + action);
+        throw new Error(data.message || 'El envío del formulario falló y no se devolvió un mensaje de error desde: ' + action);
       }
     })
     .catch((error) => {
@@ -59,8 +60,9 @@
 
   function displayError(thisForm, error) {
     thisForm.querySelector('.loading').classList.remove('d-block');
-    thisForm.querySelector('.error-message').innerHTML = error;
+    thisForm.querySelector('.error-message').innerHTML = error.message || error;
     thisForm.querySelector('.error-message').classList.add('d-block');
   }
 
 })();
+*/

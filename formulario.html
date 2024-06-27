@@ -163,9 +163,10 @@
 
           </div>
           
+
           <body>
             <div class="col-lg-8">
-                <form method="post" class="php-email-form" data-aos="fade" data-aos-delay="100">
+                <form method="post" id="formulario" action="https://app-ecolim.onrender.com/submit" class="php-email-form" data-aos="fade" data-aos-delay="100">
                     <div class="row gy-4">
                         <div class="col-md-6">
                             <input type="text" name="nombre" class="form-control" placeholder="Tu nombre" required>
@@ -176,7 +177,7 @@
                         </div>
                         
                         <div class="col-md-6">
-                            <input type="text" name="telefono" class="form-control" placeholder="Numero de Telefono" required>
+                            <input type="text" name="telefono" class="form-control" pattern="[0-9]{8,12}" placeholder="Numero de Telefono" required>
                         </div>
                         
                         <div class="col-md-6">
@@ -205,16 +206,54 @@
                 </form>
             </div>
         
-            <script src="js/validate.js"></script>
+            
         </body>
         
        
           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           
+          <script>
+        
+            $(document).ready(function() {
+                $('#formulario').on('submit', function(event) {
+                    event.preventDefault(); // Previene la acción por defecto del formulario
+                    
+                    $.ajax({
+                        url: $(this).attr('action'),
+                        type: 'POST',
+                        data: $(this).serialize(),
+                        success: function(response) {
+                            if(response.message) {
+                                Swal.fire({
+                                    icon: 'success',
+                                    title: 'Éxito',
+                                    text: response.message,
+                                });
+                                $('#formulario')[0].reset(); // Reiniciar el formulario
+                            } else if(response.error) {
+                                Swal.fire({
+                                    icon: 'error',
+                                    title: 'Error',
+                                    text: 'Ocurrió un error: ' + response.error,
+                                });
+                            }
+                        },
+                        error: function(xhr, status, error) {
+                            Swal.fire({
+                                icon: 'error',
+                                title: 'Error',
+                                text: 'Ocurrió un error: ' + error,
+                            });
+                        }
+                    });
+                });
+            });
+          </script>
 
           
-
+        
+          <!--
       </head>
       <body> 
         <div class="col-lg-8">
@@ -258,50 +297,9 @@
         </div>
       </body>
          
-      <script>
+    -->
+      
         
-        $(document).ready(function() {
-            $('#formulario').on('submit', function(event) {
-                event.preventDefault(); // Previene la acción por defecto del formulario
-                
-                $.ajax({
-                    url: $(this).attr('action'),
-                    type: 'POST',
-                    data: $(this).serialize(),
-                    success: function(response) {
-                        if(response.message) {
-                            Swal.fire({
-                                icon: 'success',
-                                title: 'Éxito',
-                                text: response.message,
-                            });
-                            $('#formulario')[0].reset(); // Reiniciar el formulario
-                        } else if(response.error) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: 'Ocurrió un error: ' + response.error,
-                            });
-                        }
-                    },
-                    error: function(xhr, status, error) {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Error',
-                            text: 'Ocurrió un error: ' + error,
-                        });
-                    }
-                });
-            });
-        });
-    
-
-    
-     
-    </script>
-      
-      
-        </body>
 
         </div>
 
