@@ -14,7 +14,9 @@
       event.preventDefault();
 
       let thisForm = this;
-      let action = 'https://app-ecolim.onrender.com/submit';  // Reemplaza con la URL de tu backend Flask
+
+      let action = 'https://api.render.com/deploy/srv-cprnncqj1k6c738bsubg?key=-zGevn6EphQ';  // Reemplaza con la URL de tu backend Flask
+
 
       if (!action) {
         displayError(thisForm, '¡La propiedad action del formulario no está configurada!');
