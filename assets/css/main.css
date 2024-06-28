@@ -2656,12 +2656,18 @@ section,
 .custom-select {
   margin-left: 1px; /* Mueve todo el listbox hacia la derecha */
   width: 100%; /* Ancho del listbox */
-  padding: 10px; /* Espacio interno */
-  font-size: 16px; /* Tamaño de fuente */
-  border: 0px solid color-mix(in srgb, var(--default-color), transparent 70%); /* Borde inicial */
-  background-color: var(--background-color); /* Fondo inicial */
-  border-radius: 10px; /* Bordes redondeados */
+  padding: 10px 15px; /* Espacio interno */
+  font-size: 14px; /* Tamaño de fuente */
+  border: 1.5px solid #000000 transparent 90%; /* Borde inicial */
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%); /* Fondo inicial */
+  border-radius: 0px; /* Bordes redondeados */
   outline: none; /* Quita el borde cuando está enfocado */
+  
+  
+  color: var(--default-color);
+
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+
 }
 
 
