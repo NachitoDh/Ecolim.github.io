@@ -166,6 +166,9 @@
 
           <body>
             <div class="col-lg-8">
+             
+              <script src="https://www.google.com/recaptcha/api.js?render=6LcHuwMqAAAAAFcfvH3FDOWB9_LTu-YHJgG6HjWF"></script>
+              
                 <form method="post" id="formulario" action="https://app-ecolim.onrender.com/submit" class="php-email-form" data-aos="fade" data-aos-delay="100">
                     <div class="row gy-4">
                         <div class="col-md-6">
@@ -194,65 +197,73 @@
                         <div class="col-md-12">
                             <textarea class="form-control" rows="2" name="descripcion" placeholder="Descripcion del servicio" required></textarea>
                         </div>
-        
+                        
+                        
                         <div class="col-md-12 text-center">
                             <div class="loading">Cargando...</div>
                             <div class="error-message"></div>
                             <div class="sent-message">Tu mensaje ha sido enviado. ¡Gracias!</div>
-        
-                            <button type="submit">Enviar Datos</button>
 
-                            
-                        </div>
+                            <button type="submit" id="enviarDatos">Enviar Datos</button>
+
+                      
+                          </div>
                     </div>
                 </form>
             </div>
         
             
         </body>
-        
-       
+
+
           <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
           <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
           
           <script>
-        
             $(document).ready(function() {
                 $('#formulario').on('submit', function(event) {
                     event.preventDefault(); // Previene la acción por defecto del formulario
-                    
-                    $.ajax({
-                        url: $(this).attr('action'),
-                        type: 'POST',
-                        data: $(this).serialize(),
-                        success: function(response) {
-                            if(response.message) {
-                                Swal.fire({
-                                    icon: 'success',
-                                    title: 'Éxito',
-                                    text: response.message,
-                                });
-                                $('#formulario')[0].reset(); // Reiniciar el formulario
-                            } else if(response.error) {
-                                Swal.fire({
-                                    icon: 'error',
-                                    title: 'Error',
-                                    text: 'Ocurrió un error: ' + response.error,
-                                });
-                            }
-                        },
-                        error: function(xhr, status, error) {
-                            Swal.fire({
-                                icon: 'error',
-                                title: 'Error',
-                                text: 'Ocurrió un error: ' + error,
+            
+                    grecaptcha.ready(function() {
+                        grecaptcha.execute('6LcHuwMqAAAAAFcfvH3FDOWB9_LTu-YHJgG6HjWF', {action: 'submit'}).then(function(token) {
+                            // Agrega el token al formulario
+                            var form = $('#formulario');
+                            form.append('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+            
+                            // Realiza la solicitud AJAX
+                            $.ajax({
+                                url: form.attr('action'),
+                                type: 'POST',
+                                data: form.serialize(),
+                                success: function(response) {
+                                    if(response.message) {
+                                        Swal.fire({
+                                            icon: 'success',
+                                            title: 'Éxito',
+                                            text: response.message,
+                                        });
+                                        form[0].reset(); // Reiniciar el formulario
+                                    } else if(response.error) {
+                                        Swal.fire({
+                                            icon: 'error',
+                                            title: 'Error',
+                                            text: 'Ocurrió un error: ' + response.error,
+                                        });
+                                    }
+                                },
+                                error: function(xhr, status, error) {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        title: 'Error',
+                                        text: 'Ocurrió un error: ' + error,
+                                    });
+                                }
                             });
-                        }
+                        });
                     });
                 });
             });
-          </script>
-
+            </script>
           
         
           <!--
