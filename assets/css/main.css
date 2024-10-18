@@ -25,10 +25,11 @@
   /* Default color used for the majority of the text content across the entire website */
   --heading-color: #172a28;
   /* Color for headings, subheadings and title throughout the website */
-  --accent-color: #008374;
+  --accent-color: #227D3D;
   /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
   --contrast-color: #ffffff;
-  /* The contrast color is used for elements when the background color is one of the heading, accent, or default colors. Its purpose is to ensure proper contrast and readability when placed over these more dominant colors */
+/* The contrast color is used for elements when the background color is one of the heading, accent, or default colors. Its purpose is to ensure proper contrast and readability when placed over these more dominant colors */
+  --color-cuadrados: #04bc3b;
 }
 
 /* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
@@ -99,7 +100,7 @@ h6 {
 # Global Header
 --------------------------------------------------------------*/
 .header {
-  --background-color: #008374;
+  --background-color: #04bc3b;
   --heading-color: #ffffff;
   color: var(--default-color);
   transition: all 0.5s;
@@ -788,7 +789,7 @@ section,
 }
 
 .hero .btn-get-started {
-  color: var(--contrast-color);
+  color: var(--conrast-color );
   background: var(--accent-color);
   font-family: var(--heading-font);
   font-weight: 500;
@@ -798,12 +799,12 @@ section,
   padding: 14px 40px;
   border-radius: 50px;
   transition: 0.3s;
-  border: 2px solid color-mix(in srgb, var(--default-color), transparent 90%);
+  border: 2px solid color-mix(in srgb, var(--default-color), transparent 10%);
   background-color: color-mix(in srgb, var(--default-color), transparent 90%);
 }
 
 .hero .btn-get-started:hover {
-  border-color: color-mix(in srgb, var(--default-color), transparent 60%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 70%);
 }
 
 .hero .btn-watch-video {
@@ -857,17 +858,18 @@ section,
 
 .hero .icon-box {
   padding: 60px 30px;
-  position: relative;
+  position: static;
   overflow: hidden;
-  background: color-mix(in srgb, var(--accent-color), white 4%);
+  background: color-mix(in srgb, var(--color-cuadrados), white 4%);
   box-shadow: 0 0 29px 0 rgba(0, 0, 0, 0.1);
   transition: all 0.3s ease-in-out;
-  border-radius: 8px;
+  border-radius: 10px;
   z-index: 1;
   height: 100%;
   width: 100%;
   text-align: center;
 }
+
 
 .hero .icon-box .title {
   font-weight: 700;
@@ -875,8 +877,14 @@ section,
   font-size: 24px;
 }
 
+.icon-img {
+  margin-bottom: 10px; /* Espacio debajo del ícono */
+  display: inline-block;
+  vertical-align: middle; /* Asegura que la imagen esté bien alineada */
+}
+
 .hero .icon-box .title a {
-  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  color: color-mix(in srgb, var(--default-color), transparent 10%);
   transition: 0.3s;
 }
 
@@ -2869,7 +2877,7 @@ section,
   width: 16px;
   border-radius: 50%;
   left: 0px;
-  background-color: #008374;
+  background-color: #ffffff;
 }
 
 .message, 
