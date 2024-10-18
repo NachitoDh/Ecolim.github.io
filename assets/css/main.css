@@ -1973,6 +1973,48 @@ section,
   background: color-mix(in srgb, var(--accent-color), transparent 20%);
 }
 
+
+
+
+.contact .php-email-form .input-group {
+  display: flex;
+  align-items: center;
+  
+}
+
+.contact .php-email-form .input-group-text {
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border: 1px solid color-mix(in srgb, var(--default-color), transparent 50%);
+  padding: 10px 15px;
+  font-size: 14px;
+  color: var(--default-color);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  box-shadow: none;
+  border-radius: 0;
+}
+
+.contact .php-email-form .input-group input[type=text] {
+  font-size: 14px;
+  padding: 10px 15px;
+  box-shadow: none;
+  border-radius: 0;
+  color: var(--default-color);
+  background-color: color-mix(in srgb, var(--background-color), transparent 50%);
+  border-color: color-mix(in srgb, var(--default-color), transparent 80%);
+  flex-grow: 1;
+}
+
+.contact .php-email-form .input-group input[type=text]:focus {
+  border-color: var(--accent-color);
+}
+
+.contact .php-email-form .input-group input[type=text]::placeholder {
+  color: color-mix(in srgb, var(--default-color), transparent 70%);
+}
+
+
+
+
 @keyframes animate-loading {
   0% {
     transform: rotate(0deg);
